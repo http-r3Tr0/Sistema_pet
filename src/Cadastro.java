@@ -11,7 +11,7 @@ public class Cadastro {
             try (FileReader fr = new FileReader(form); BufferedReader bf = new BufferedReader(fr)){
                 String linha;
                 while((linha = bf.readLine()) != null){
-                    System.out.println(linha);
+                    //System.out.println(linha);
                 }
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -26,28 +26,32 @@ public class Cadastro {
                         "5. Listar pets por algum critério (idade, nome, raça)\n" +
                         "6. Sair");
                 opcao = sc.nextInt();
-                        switch (opcao) {
-                            case 1:
-                                System.out.println("cadastrar pet");
-                                break;
-                            case 2:
-                                System.out.println("alterar dados do pet");
-                                break;
-                            case 3:
-                                System.out.println("deletar um pet cadastrado");
-                                break;
-                            case 4:
-                                System.out.println("listar pets");
-                                break;
+                if (opcao <= 0){
+                    System.out.println("digite um número valido: ");
+                    opcao = sc.nextInt();
+                } else {
+                    switch (opcao) {
+                        case 1:
+                            System.out.println("cadastrar pet");
+                            break;
+                        case 2:
+                            System.out.println("alterar dados do pet");
+                            break;
+                        case 3:
+                            System.out.println("deletar um pet cadastrado");
+                            break;
+                        case 4:
+                            System.out.println("listar pets");
+                            break;
 
-                            case 5:
-                                System.out.println("listar pets por um criterio");
-                                        break;
-                            default:
-                                System.out.println("inválido");
-                                break;
-                        }
-
+                        case 5:
+                            System.out.println("listar pets por um criterio");
+                            break;
+                        default:
+                            System.out.println("inválido");
+                            break;
+                    }
+                }
             }
         }
     }
