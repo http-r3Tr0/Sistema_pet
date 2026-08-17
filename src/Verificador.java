@@ -1,7 +1,10 @@
 import java.util.InputMismatchException;
 
 public class Verificador {
-    public boolean Verificador(int valor) {
+    private int valor;
+
+    public boolean verificando(int valor) {
+        this.valor = valor;
         try {
             if (valor <= 0){
                 return false;

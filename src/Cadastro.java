@@ -16,7 +16,6 @@ public class Cadastro {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            System.out.println("\n");
             int opcao = 0;
             while (opcao != 6){
                 System.out.println("1. Cadastrar um novo pet\n" +
@@ -25,10 +24,17 @@ public class Cadastro {
                         "4. Listar todos os pets cadastrados\n" +
                         "5. Listar pets por algum critério (idade, nome, raça)\n" +
                         "6. Sair");
+                System.out.print("Escolha uma opção: ");
                 opcao = sc.nextInt();
-                if (opcao <= 0){
-                    System.out.println("digite um número valido: ");
+                 Verificador verificandor = new Verificador();
+
+                if (verificandor.verificando(opcao) == false){
+                    System.out.print("Por favor digite um número valido: ");
                     opcao = sc.nextInt();
+                    if (verificandor.verificando(opcao) == false) {
+                        System.out.println("Encerrando programa...");
+                        break;
+                    }
                 } else {
                     switch (opcao) {
                         case 1:
@@ -46,6 +52,10 @@ public class Cadastro {
 
                         case 5:
                             System.out.println("listar pets por um criterio");
+                            break;
+
+                        case 6:
+                            System.out.println("Encerrando o programa...");
                             break;
                         default:
                             System.out.println("inválido");
