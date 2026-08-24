@@ -1,3 +1,5 @@
+package domain;
+
 public class Animais {
     private String nome;
     private String sobrenome;
