@@ -1,10 +1,16 @@
 package test;
 
 import service.CadastroPet;
+import service.LerPerguntas;
 
 public class TestMethods01 {
-    static void main() {
-        CadastroPet cadastroPet = new CadastroPet();
-        cadastroPet.cadastrar();
+    public static void main(String[] args) {
+        LerPerguntas lerPerguntas = new LerPerguntas();
+        lerPerguntas.carregarPerguntas();
+        System.out.println("------------- teste -------------");
+        lerPerguntas.imprimir();
+        lerPerguntas.pergunta();
+        lerPerguntas.pergunta();
+
     }
 }
