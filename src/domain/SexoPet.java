@@ -1,6 +1,15 @@
 package domain;
 
 public enum SexoPet {
-    MASCULINO,
-    FEMININO;
+    MASCULINO("masculino"),
+    FEMININO("feminino");
+
+    private String SEXO;
+    SexoPet(String tipo) {
+        SEXO = tipo;
+    }
+
+    public String getSEXO() {
+        return SEXO;
+    }
 }

@@ -32,6 +32,7 @@ public class LerPerguntas {
     public void tamanho() {
         System.out.println(lista.size());
     }
+//method que vai imprimir a pergunta, e toda vez que for chamado, vai perguntar a proxima.
     int p = 0;
     public void pergunta() {
         System.out.println(lista.get(p));

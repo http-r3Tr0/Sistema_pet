@@ -1,6 +1,6 @@
 package domain;
 
-public class Animais {
+public class Pet {
     private String nome;
     private String sobrenome;
 
@@ -16,14 +16,17 @@ public class Animais {
 
     private String raca_pet;
 
-    public Animais(String nome, String sobrenome, TipoPet tipo_pet, SexoPet sexoPet, String numero_casa, String cidade, String rua, int idade_pet, float peso_pet, String raca_pet) {
+    public Pet(String nome, String sobrenome, TipoPet tipo_pet, SexoPet sexoPet, String rua, String numero_casa, String cidade, int idade_pet, float peso_pet, String raca_pet) {
         this.nome = nome;
         this.sobrenome = sobrenome;
+
         this.tipo_pet = tipo_pet;
         this.sexoPet = sexoPet;
+
+        this.rua = rua;
         this.numero_casa = numero_casa;
         this.cidade = cidade;
-        this.rua = rua;
+
         this.idade_pet = idade_pet;
         this.peso_pet = peso_pet;
         this.raca_pet = raca_pet;
