@@ -47,21 +47,27 @@ public class CadastroPet {
                                 System.out.println("tomanocuein");
                         }
                 // pergunta 4
+
                 lerPerguntas.pergunta();
-                String pergunta_4 = sc.next();
-                Scanner sc_limitado = new Scanner(pergunta_4);
-                sc_limitado.useDelimiter(",");
-                while (sc_limitado.hasNext()) {
-                    if (sc_limitado.hasNextInt()) {
+                   sc.nextLine();
+                String endereco = sc.nextLine();
+               Scanner scanner = new Scanner(endereco);
+               scanner.useDelimiter(",");
 
-                    }
-                }
-
-
+               String rua = scanner.next().trim();
+               String numero = scanner.next().trim();
+               String cidade = scanner.next().trim();
 
                 // pergunta 5
                 lerPerguntas.pergunta();
+                sc.nextInt();
 
+                // pergunta 6
+            lerPerguntas.pergunta();
+            String peso_cru = sc.next();
+            peso_cru.replace(",",".");
+            int peso = Integer.parseInt(peso_cru);
+            System.out.println(peso);
 
                 }
         }
