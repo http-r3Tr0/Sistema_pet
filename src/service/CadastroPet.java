@@ -65,8 +65,8 @@ public class CadastroPet {
                 // pergunta 6
             lerPerguntas.pergunta();
             String peso_cru = sc.next();
-            peso_cru.replace(",",".");
-            int peso = Integer.parseInt(peso_cru);
+            String peso_padrao = peso_cru.replace(",",".");
+            float peso = Float.parseFloat(peso_padrao);
             System.out.println(peso);
 
                 }
