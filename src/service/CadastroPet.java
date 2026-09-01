@@ -48,9 +48,16 @@ public class CadastroPet {
                         }
                 // pergunta 4
                 lerPerguntas.pergunta();
-                String rua = sc.next();
-                int numero = sc.nextInt();
-                String cidade = sc.next();
+                String pergunta_4 = sc.next();
+                Scanner sc_limitado = new Scanner(pergunta_4);
+                sc_limitado.useDelimiter(",");
+                while (sc_limitado.hasNext()) {
+                    if (sc_limitado.hasNextInt()) {
+
+                    }
+                }
+
+
 
                 // pergunta 5
                 lerPerguntas.pergunta();
