@@ -1,5 +1,8 @@
 package service;
 
+import Exceptions.InvalidAgeException;
+import Exceptions.InvalidWeigthException;
+import Exceptions.NullSobrenomeException;
 import domain.SexoPet;
 import domain.TipoPet;
 
@@ -15,9 +18,15 @@ public class CadastroPet {
 
                 //pergunta 1
                 lerPerguntas.pergunta();
-                String nome = sc.next();
-                String sobrenome = sc.next();
+                try {
+                    String nome = sc.next();
+                    String sobrenome = sc.nextLine();
+                    if (sobrenome == null || sobrenome == " ") {
+                        throw new NullSobrenomeException("Sem sobrenome");
+                    }
+                } catch (NullPointerException e) {
 
+                }
                 //pergunta 2 enum
                 TipoPet tipoPet;
                 lerPerguntas.pergunta();
@@ -49,7 +58,7 @@ public class CadastroPet {
                 // pergunta 4
 
                 lerPerguntas.pergunta();
-                   sc.nextLine();
+                sc.nextLine();
                 String endereco = sc.nextLine();
                Scanner scanner = new Scanner(endereco);
                scanner.useDelimiter(",");
@@ -58,16 +67,38 @@ public class CadastroPet {
                String numero = scanner.next().trim();
                String cidade = scanner.next().trim();
 
+            System.out.println(rua);
+            System.out.println(numero);
+            System.out.println(cidade);
+
                 // pergunta 5
                 lerPerguntas.pergunta();
-                sc.nextInt();
+                try {
+                    int idade = sc.nextInt();
+                    if (idade >= 20) {
+                        throw new InvalidAgeException("idade maluca");
+                    }
+                } catch (RuntimeException e) {
+                    throw new RuntimeException(e);
+                }
 
                 // pergunta 6
             lerPerguntas.pergunta();
-            String peso_cru = sc.next();
-            String peso_padrao = peso_cru.replace(",",".");
-            float peso = Float.parseFloat(peso_padrao);
-            System.out.println(peso);
+            try {
+                String peso_cru = sc.next();
+                String peso_padrao = peso_cru.replace(",",".");
+                float peso = Float.parseFloat(peso_padrao);
+                if (peso > 60) {
+                    throw new InvalidWeigthException("peso invalido");
+                }
+            } catch (NumberFormatException e) {
+                throw new RuntimeException(e);
+            }
+
+            //pergunta 7
+            lerPerguntas.pergunta();
+            String raca = sc.next();
+
 
                 }
         }
