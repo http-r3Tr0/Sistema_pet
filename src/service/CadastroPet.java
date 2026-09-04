@@ -5,7 +5,9 @@ import Exceptions.InvalidWeigthException;
 import Exceptions.NullSobrenomeException;
 import domain.SexoPet;
 import domain.TipoPet;
+import jdk.swing.interop.SwingInterOpUtils;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class CadastroPet {
@@ -18,15 +20,17 @@ public class CadastroPet {
 
                 //pergunta 1
                 lerPerguntas.pergunta();
+            String nome = sc.next().replaceAll("[0-9.,?!@#$%¨&*\\-+=]","");
+            String sobrenome = sc.next().replace("[0-9.,?!@#$%¨&*\\-+=]","");
                 try {
-                    String nome = sc.next();
-                    String sobrenome = sc.nextLine();
-                    if (sobrenome == null || sobrenome == " ") {
+                    if (sobrenome.isEmpty()) {
                         throw new NullSobrenomeException("Sem sobrenome");
                     }
                 } catch (NullPointerException e) {
-
+                    throw new RuntimeException();
                 }
+            System.out.println(nome);
+            System.out.println(sobrenome);
                 //pergunta 2 enum
                 TipoPet tipoPet;
                 lerPerguntas.pergunta();
@@ -40,6 +44,7 @@ public class CadastroPet {
                 } else {
                         System.out.println("é foda ein");
                 }
+            System.out.println(tE);
 
                //pergunta 3 enum
                    SexoPet sexoPet;
@@ -55,6 +60,7 @@ public class CadastroPet {
                         } else {
                                 System.out.println("tomanocuein");
                         }
+            System.out.println(toEnum);
                 // pergunta 4
 
                 lerPerguntas.pergunta();
@@ -73,32 +79,42 @@ public class CadastroPet {
 
                 // pergunta 5
                 lerPerguntas.pergunta();
-                try {
-                    int idade = sc.nextInt();
+                int idade = sc.nextInt();
+            try {
                     if (idade >= 20) {
                         throw new InvalidAgeException("idade maluca");
                     }
+                    System.out.println(idade);
                 } catch (RuntimeException e) {
                     throw new RuntimeException(e);
                 }
 
-                // pergunta 6
+
+            // pergunta 6
             lerPerguntas.pergunta();
-            try {
                 String peso_cru = sc.next();
                 String peso_padrao = peso_cru.replace(",",".");
+            System.out.println(peso_padrao);
                 float peso = Float.parseFloat(peso_padrao);
+            try {
                 if (peso > 60) {
                     throw new InvalidWeigthException("peso invalido");
                 }
             } catch (NumberFormatException e) {
                 throw new RuntimeException(e);
             }
-
             //pergunta 7
             lerPerguntas.pergunta();
-            String raca = sc.next();
+            String raca = sc.next().replace("[0-9.,?!@#$%¨&*\\-+=]","");
+            System.out.println(raca);
+        final String naoinformado = "NAO INFORMADO";
 
+            if (nome.isEmpty()) {
+                nome = naoinformado;
+            }
+            if (raca.isEmpty()){
+                raca = naoinformado;
+            }
 
                 }
         }
