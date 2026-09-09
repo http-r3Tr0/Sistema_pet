@@ -7,11 +7,15 @@ import domain.SexoPet;
 import domain.TipoPet;
 import jdk.swing.interop.SwingInterOpUtils;
 
+import javax.print.DocFlavor;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class CadastroPet {
         public void cadastrarPet() {
+            final String naoinformado = "NÃO INFORMADO";
                 Scanner sc = new Scanner(System.in);
 
                 //carregar as perguntas e inicializar a lista
@@ -21,14 +25,18 @@ public class CadastroPet {
                 //pergunta 1
                 lerPerguntas.pergunta();
             String nome = sc.next().replaceAll("[0-9.,?!@#$%¨&*\\-+=]","");
-            String sobrenome = sc.next().replace("[0-9.,?!@#$%¨&*\\-+=]","");
+            String sobrenome = sc.nextLine().replace("[0-9.,?!@#$%¨&*\\-+=]","");
                 try {
-                    if (sobrenome.isEmpty()) {
+                    if (sobrenome.isEmpty() || sobrenome.isBlank()) {
                         throw new NullSobrenomeException("Sem sobrenome");
                     }
                 } catch (NullPointerException e) {
                     throw new RuntimeException();
                 }
+            if (nome.isEmpty()) {
+                nome = naoinformado;
+            }
+
             System.out.println(nome);
             System.out.println(sobrenome);
                 //pergunta 2 enum
@@ -73,20 +81,30 @@ public class CadastroPet {
                String numero = scanner.next().trim();
                String cidade = scanner.next().trim();
 
+            if (numero.isBlank()) {
+                numero = naoinformado;
+            }
+
             System.out.println(rua);
             System.out.println(numero);
             System.out.println(cidade);
 
                 // pergunta 5
                 lerPerguntas.pergunta();
-                int idade = sc.nextInt();
+                String idade = sc.nextLine();
             try {
-                    if (idade >= 20) {
+                Integer idade_numero = Integer.parseInt(idade);
+                if (idade.isBlank() || idade.isEmpty()) {
+                    idade = naoinformado;
+                    idade_numero = 0;
+                }
+                    if (idade_numero >= 20) {
                         throw new InvalidAgeException("idade maluca");
                     }
-                    System.out.println(idade);
-                } catch (RuntimeException e) {
-                    throw new RuntimeException(e);
+
+                    System.out.println(idade_numero);
+                } catch (NumberFormatException e) {
+                    throw new NumberFormatException("passou string como número");
                 }
 
 
@@ -105,17 +123,21 @@ public class CadastroPet {
             }
             //pergunta 7
             lerPerguntas.pergunta();
-            String raca = sc.next().replace("[0-9.,?!@#$%¨&*\\-+=]","");
-            System.out.println(raca);
-        final String naoinformado = "NAO INFORMADO";
+            String raca = sc.next().replaceAll("[0-9.,?!@#$%¨&*\\-+=]", "");
 
-            if (nome.isEmpty()) {
-                nome = naoinformado;
-            }
             if (raca.isEmpty()){
                 raca = naoinformado;
             }
+            System.out.println(raca);
 
-                }
+            //area do arquivo
+            LocalDateTime horario_cadastro = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd'T'hhmm");
+            String formatado = horario_cadastro.format(formatter);
+            System.out.println(formatado);
+
+
+
+        }
         }
 
