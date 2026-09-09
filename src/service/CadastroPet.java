@@ -113,10 +113,18 @@ public class CadastroPet {
 
             // pergunta 6
             lerPerguntas.pergunta();
-                String peso_cru = sc.next();
-                String peso_padrao = peso_cru.replace(",",".");
-            System.out.println(peso_padrao);
-                float peso = Float.parseFloat(peso_padrao);
+            String peso_cru = sc.nextLine();
+            String peso_padrao;
+            float peso;
+            if (peso_cru.isBlank()){
+                peso_cru = naoinformado;
+                peso = 0;
+                peso_padrao = null;
+            } else {
+                peso_padrao = peso_cru.replace(",",".");
+                peso = Float.parseFloat(peso_padrao);
+                System.out.println(peso_padrao);
+            }
             try {
                 if (peso > 60) {
                     throw new InvalidWeigthException("peso invalido");
@@ -124,6 +132,10 @@ public class CadastroPet {
             } catch (NumberFormatException e) {
                 throw new RuntimeException(e);
             }
+            System.out.println(peso);
+            System.out.println(peso_padrao);
+            System.out.println(peso_cru);
+
             //pergunta 7
             lerPerguntas.pergunta();
             String raca = sc.next().replaceAll("[0-9.,?!@#$%¨&*\\-+=]", "");
