@@ -90,22 +90,25 @@ public class CadastroPet {
             System.out.println(cidade);
 
                 // pergunta 5
-                lerPerguntas.pergunta();
-                String idade = sc.nextLine();
-            try {
-                Integer idade_numero = Integer.parseInt(idade);
-                if (idade.isBlank() || idade.isEmpty()) {
-                    idade = naoinformado;
-                    idade_numero = 0;
-                }
-                    if (idade_numero >= 20) {
-                        throw new InvalidAgeException("idade maluca");
-                    }
+            lerPerguntas.pergunta();
+            String idade = sc.nextLine();
+            Integer idade_numero;
 
-                    System.out.println(idade_numero);
-                } catch (NumberFormatException e) {
-                    throw new NumberFormatException("passou string como número");
+            if (idade.isBlank()) {
+                idade = naoinformado;
+                idade_numero = 0;
+            } else {
+                idade_numero = Integer.parseInt(idade);
+            }
+            try {
+                if (idade_numero >= 20) {
+                    throw new InvalidAgeException("idade maluca");
                 }
+            } catch (NumberFormatException e) {
+                throw new NumberFormatException("passou string como número");
+            }
+            System.out.println(idade);
+            System.out.println(idade_numero);
 
 
             // pergunta 6
