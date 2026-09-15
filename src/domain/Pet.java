@@ -12,11 +12,11 @@ public class Pet {
     private String rua;
 
     private String idade_pet;
-    private float peso_pet;
+    private String peso_pet;
 
     private String raca_pet;
 
-    public Pet(String nome, String sobrenome, TipoPet tipo_pet, SexoPet sexoPet, String rua, String numero_casa, String cidade, String idade_pet, float peso_pet, String raca_pet) {
+    public Pet(String nome, String sobrenome, TipoPet tipo_pet, SexoPet sexoPet, String rua, String numero_casa, String cidade, String idade_pet, String peso_pet, String raca_pet) {
         this.nome = nome;
         this.sobrenome = sobrenome;
 
@@ -96,13 +96,11 @@ public class Pet {
         this.idade_pet = idade_pet;
     }
 
-    public float getPeso_pet() {
+    public String getPeso_pet() {
         return peso_pet;
     }
 
-    public void setPeso_pet(float peso_pet) {
-        this.peso_pet = peso_pet;
-    }
+    public void setPeso_pet(String peso_pet) {this.peso_pet = peso_pet;}
 
     public String getRaca_pet() {
         return raca_pet;

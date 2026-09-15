@@ -5,12 +5,10 @@ import Exceptions.InvalidWeigthException;
 import Exceptions.NullSobrenomeException;
 import domain.SexoPet;
 import domain.TipoPet;
-import jdk.swing.interop.SwingInterOpUtils;
 
-import javax.print.DocFlavor;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class CadastroPet {
@@ -24,38 +22,20 @@ public class CadastroPet {
 
                 //pergunta 1
                 lerPerguntas.pergunta();
-            String nome = sc.next().replaceAll("[0-9.,?!@#$%¨&*\\-+=]","");
-            String sobrenome = sc.nextLine().replace("[0-9.,?!@#$%¨&*\\-+=]","");
-                try {
-                    if (sobrenome.isEmpty() || sobrenome.isBlank()) {
-                        throw new NullSobrenomeException("Sem sobrenome");
-                    }
-                } catch (NullPointerException e) {
-                    throw new RuntimeException();
-                }
-            if (nome.isEmpty()) {
-                nome = naoinformado;
-            }
+                LerNome lerNome = new LerNome();
+                LerSobre lerSobre = new LerSobre();
+                String nome = lerNome.lerNome();
+               String sobre = lerSobre.lerSobre();
 
-            System.out.println(nome);
-            System.out.println(sobrenome);
+
                 //pergunta 2 enum
-                TipoPet tipoPet;
+                TipoPet tipoPet = null;
                 lerPerguntas.pergunta();
-                String pergunta2 = sc.next();
-                ToEnum tE = new ToEnum();
-
-                if (tE.paraEnum(pergunta2).equals("Cachorro")) {
-                        tipoPet = TipoPet.CACHORRO;
-                } else if (tE.paraEnum(pergunta2).equals("Gato")) {
-                        tipoPet = TipoPet.GATO;
-                } else {
-                        System.out.println("é foda ein");
-                }
-            System.out.println(tE);
+              LerTipoPet lerTipoPet = new LerTipoPet();
+              TipoPet tipo_Pet = lerTipoPet.LerTipo();
 
                //pergunta 3 enum
-                   SexoPet sexoPet;
+                   SexoPet sexoPet = null;
                    lerPerguntas.pergunta();
                    String pergunta3 = sc.next();
                    ToEnum toEnum = new ToEnum();
@@ -119,7 +99,7 @@ public class CadastroPet {
             if (peso_cru.isBlank()){
                 peso_cru = naoinformado;
                 peso = 0;
-                peso_padrao = null;
+                peso_padrao = naoinformado;
             } else {
                 peso_padrao = peso_cru.replace(",",".");
                 peso = Float.parseFloat(peso_padrao);
@@ -133,17 +113,38 @@ public class CadastroPet {
                 throw new RuntimeException(e);
             }
             System.out.println(peso);
-            System.out.println(peso_padrao);
             System.out.println(peso_cru);
+            System.out.println(peso_padrao);
 
             //pergunta 7
             lerPerguntas.pergunta();
-            String raca = sc.next().replaceAll("[0-9.,?!@#$%¨&*\\-+=]", "");
+            String raca = sc.nextLine().replaceAll("[0-9.,?!@#$%¨&*\\-+=]", "");
 
             if (raca.isEmpty()){
                 raca = naoinformado;
             }
             System.out.println(raca);
+
+            //area do registro
+            System.out.println("============== Confirme as informações ==============");
+
+
+            System.out.println(tipoPet);
+
+            System.out.println(sexoPet);
+
+            System.out.println(rua);
+            System.out.println(numero);
+            System.out.println(cidade);
+
+            System.out.println(idade_numero);
+            System.out.println(idade);
+
+            System.out.println(peso_padrao);
+
+            System.out.println(raca);
+
+
 
             //area do arquivo
             LocalDateTime horario_cadastro = LocalDateTime.now();
