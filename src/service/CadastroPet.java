@@ -36,19 +36,10 @@ public class CadastroPet {
 
                //pergunta 3 enum
                    SexoPet sexoPet = null;
+                   LerSexoPet lerSexoPet = new LerSexoPet();
                    lerPerguntas.pergunta();
-                   String pergunta3 = sc.next();
-                   ToEnum toEnum = new ToEnum();
-                   if (toEnum.paraEnumSexo(pergunta3).equals("Feminino")) {
-                           sexoPet = SexoPet.FEMININO;
+                 sexoPet= lerSexoPet.lerSexo();
 
-                        } else if (toEnum.paraEnumSexo(pergunta3).equals("Masculino")) {
-                          sexoPet = SexoPet.MASCULINO;
-
-                        } else {
-                                System.out.println("tomanocuein");
-                        }
-            System.out.println(toEnum);
                 // pergunta 4
 
                 lerPerguntas.pergunta();
