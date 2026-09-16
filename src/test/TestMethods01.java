@@ -2,6 +2,7 @@ package test;
 
 import jdk.swing.interop.SwingInterOpUtils;
 import service.CadastroPet;
+import service.LerEndereco;
 import service.LerPerguntas;
 import service.ToEnum;
 
@@ -15,8 +16,10 @@ public class TestMethods01 {
         lerPerguntas.carregarPerguntas();
         System.out.println("------------- teste -------------");
 
+
+
         CadastroPet cadastroPet = new CadastroPet();
-        cadastroPet.cadastrarPet();
+       cadastroPet.cadastrarPet();
 
 
 

@@ -16,8 +16,6 @@ public class LerSobre {
         } catch (NullPointerException e) {
             throw new RuntimeException();
         }
-        System.out.println(sobrenome);
-
         return sobrenome;
     }
 }

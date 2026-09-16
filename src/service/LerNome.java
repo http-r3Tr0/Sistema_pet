@@ -13,7 +13,6 @@ public class LerNome {
             if (nome.isEmpty()) {
                     nome = naoinformado;
                 }
-        System.out.println(nome);
         return nome;
     }
 }

@@ -38,27 +38,15 @@ public class CadastroPet {
                    SexoPet sexoPet = null;
                    LerSexoPet lerSexoPet = new LerSexoPet();
                    lerPerguntas.pergunta();
-                 sexoPet= lerSexoPet.lerSexo();
+                   sexoPet = lerSexoPet.lerSexo();
 
                 // pergunta 4
 
                 lerPerguntas.pergunta();
-                sc.nextLine();
-                String endereco = sc.nextLine();
-               Scanner scanner = new Scanner(endereco);
-               scanner.useDelimiter(",");
+                LerEndereco lerEndereco = new LerEndereco();
+                String endereco = lerEndereco.lerEndereco();
 
-               String rua = scanner.next().trim();
-               String numero = scanner.next().trim();
-               String cidade = scanner.next().trim();
 
-            if (numero.isBlank()) {
-                numero = naoinformado;
-            }
-
-            System.out.println(rua);
-            System.out.println(numero);
-            System.out.println(cidade);
 
                 // pergunta 5
             lerPerguntas.pergunta();
@@ -124,9 +112,7 @@ public class CadastroPet {
 
             System.out.println(sexoPet);
 
-            System.out.println(rua);
-            System.out.println(numero);
-            System.out.println(cidade);
+
 
             System.out.println(idade_numero);
             System.out.println(idade);
