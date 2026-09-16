@@ -24,8 +24,6 @@ public class LerIdade {
         } catch (NumberFormatException e){
             throw new NumberFormatException("passou String como número");
         }
-        System.out.println(idade);
-        System.out.println(idade_sc);
         return idade_sc;
     }
 }

@@ -46,8 +46,6 @@ public class CadastroPet {
                 LerEndereco lerEndereco = new LerEndereco();
                 String endereco = lerEndereco.lerEndereco();
 
-
-
                 // pergunta 5
             lerPerguntas.pergunta();
             LerIdade lerIdade= new LerIdade();
@@ -55,37 +53,14 @@ public class CadastroPet {
 
             // pergunta 6
             lerPerguntas.pergunta();
-            String peso_cru = sc.nextLine();
-            String peso_padrao;
-            float peso;
-            if (peso_cru.isBlank()){
-                peso_cru = naoinformado;
-                peso = 0;
-                peso_padrao = naoinformado;
-            } else {
-                peso_padrao = peso_cru.replace(",",".");
-                peso = Float.parseFloat(peso_padrao);
-                System.out.println(peso_padrao);
-            }
-            try {
-                if (peso > 60) {
-                    throw new InvalidWeigthException("peso invalido");
-                }
-            } catch (NumberFormatException e) {
-                throw new RuntimeException(e);
-            }
-            System.out.println(peso);
-            System.out.println(peso_cru);
-            System.out.println(peso_padrao);
+            LerPeso lerPeso = new LerPeso();
+            String peso = lerPeso.lerPeso();
 
             //pergunta 7
             lerPerguntas.pergunta();
-            String raca = sc.nextLine().replaceAll("[0-9.,?!@#$%¨&*\\-+=]", "");
+            LerRaca lerRaca = new LerRaca();
+            String raca = lerRaca.lerRaca();
 
-            if (raca.isEmpty()){
-                raca = naoinformado;
-            }
-            System.out.println(raca);
 
             //area do registro
             System.out.println("============== Confirme as informações ==============");
@@ -97,7 +72,7 @@ public class CadastroPet {
 
             System.out.println(idade);
 
-            System.out.println(peso_padrao);
+            System.out.println(peso);
 
             System.out.println(raca);
 

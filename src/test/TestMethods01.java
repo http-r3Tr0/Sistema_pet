@@ -13,9 +13,8 @@ public class TestMethods01 {
         lerPerguntas.carregarPerguntas();
         System.out.println("------------- teste -------------");
 
-        System.out.println("idade pet:");
 
-        System.out.println(idad);
+
         CadastroPet cadastroPet = new CadastroPet();
        cadastroPet.cadastrarPet();
 
