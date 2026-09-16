@@ -1,10 +1,7 @@
 package test;
 
 import jdk.swing.interop.SwingInterOpUtils;
-import service.CadastroPet;
-import service.LerEndereco;
-import service.LerPerguntas;
-import service.ToEnum;
+import service.*;
 
 import javax.swing.text.DateFormatter;
 import java.time.LocalDateTime;
@@ -16,8 +13,9 @@ public class TestMethods01 {
         lerPerguntas.carregarPerguntas();
         System.out.println("------------- teste -------------");
 
+        System.out.println("idade pet:");
 
-
+        System.out.println(idad);
         CadastroPet cadastroPet = new CadastroPet();
        cadastroPet.cadastrarPet();
 

@@ -50,25 +50,8 @@ public class CadastroPet {
 
                 // pergunta 5
             lerPerguntas.pergunta();
-            String idade = sc.nextLine();
-            Integer idade_numero;
-
-            if (idade.isBlank()) {
-                idade = naoinformado;
-                idade_numero = 0;
-            } else {
-                idade_numero = Integer.parseInt(idade);
-            }
-            try {
-                if (idade_numero >= 20) {
-                    throw new InvalidAgeException("idade maluca");
-                }
-            } catch (NumberFormatException e) {
-                throw new NumberFormatException("passou string como número");
-            }
-            System.out.println(idade);
-            System.out.println(idade_numero);
-
+            LerIdade lerIdade= new LerIdade();
+            String idade = lerIdade.lerIdade();
 
             // pergunta 6
             lerPerguntas.pergunta();
@@ -112,9 +95,6 @@ public class CadastroPet {
 
             System.out.println(sexoPet);
 
-
-
-            System.out.println(idade_numero);
             System.out.println(idade);
 
             System.out.println(peso_padrao);
